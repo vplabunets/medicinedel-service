@@ -1,15 +1,19 @@
 {
   "name": "medicinedel-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "medicine shop API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
     "build": "node server.js",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vplabunets/medicinedel-service.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

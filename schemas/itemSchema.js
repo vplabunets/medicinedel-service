@@ -14,6 +14,9 @@ const ItemSchema = mongoose.Schema(
     title: {
       type: String,
     },
+    favorite: {
+      type: Boolean,
+    },
   },
   { versionKey: false, timestamps: true }
 );

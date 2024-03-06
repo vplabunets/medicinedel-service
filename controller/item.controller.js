@@ -1,8 +1,8 @@
-const createError = require("http-errors");
-const { Item } = require("../models/item");
- 
+const createError = require('http-errors');
+const { Item } = require('../models/item');
+
 async function createItem(req, res, next) {
-  const { shop, url, price, title } = req.body;
+  const { shop, url, price, title, favorite } = req.body;
   try {
     console.log(req.body);
     await Item.create({
@@ -10,16 +10,18 @@ async function createItem(req, res, next) {
       url,
       price,
       title,
+      favorite,
     });
     res.status(201).json({
       shop,
       url,
       price,
       title,
+      favorite,
     });
   } catch (err) {
-    if (err.message.includes("E11000 duplicate key error")) {
-      return next(createError(409, "Atricle with this title already exists"));
+    if (err.message.includes('E11000 duplicate key error')) {
+      return next(createError(409, 'Atricle with this title already exists'));
     }
     throw err;
   }
@@ -38,12 +40,11 @@ async function getItems(req, res, next) {
   }
 }
 async function getItemById(req, res, next) {
-
-    const { _id } = req.params;
-   try {
+  const { _id } = req.params;
+  try {
     const item = await Item.findById(_id);
     if (!item) {
-      return res.status(400).json({ message: "Item not found" });
+      return res.status(400).json({ message: 'Item not found' });
     }
     return res.status(200).json(item);
   } catch (error) {
@@ -53,12 +54,12 @@ async function getItemById(req, res, next) {
 
 async function updateItem(req, res, next) {
   const { _id } = req.params;
- 
+
   try {
     const updatedItem = await Item.findByIdAndUpdate(_id, req.body, {
       new: true,
     });
-     return res.status(200).json(updatedItem);
+    return res.status(200).json(updatedItem);
   } catch (error) {
     console.error(err);
   }

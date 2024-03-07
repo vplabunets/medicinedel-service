@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const { Order } = require('../models/order');
 
 async function placeOrder(req, res, next) {
-  const { name, email, address, order, orderList } = req.body;
+  const { name, email, address, phone, orderList } = req.body;
   try {
     console.log(req.body);
     await Order.create({
@@ -16,7 +16,7 @@ async function placeOrder(req, res, next) {
       name,
       email,
       address,
-      order,
+      phone,
       orderList,
     });
   } catch (err) {

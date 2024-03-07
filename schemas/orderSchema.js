@@ -15,9 +15,9 @@ const OrderSchema = mongoose.Schema(
     address: {
       type: String,
     },
-    order: [
+    orderList: [
       {
-        product: String,
+        medicineId: String,
         quantity: Number,
       },
     ],

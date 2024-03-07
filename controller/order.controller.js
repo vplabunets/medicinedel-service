@@ -9,7 +9,7 @@ async function placeOrder(req, res, next) {
       name,
       email,
       address,
-      order,
+      phone,
       orderList,
     });
     res.status(201).json({

@@ -1,4 +1,4 @@
-# Medicine Service
+# Medicine Delivery Service
 
 Welcome to the Medicine Delivery Service repository! This repository contains the backend part of the Medicine Delivery
 project, which is developed using Node.js with Express and MongoDB✔️ as the database.

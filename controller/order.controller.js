@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const { Order } = require('../models/order');
 
 async function placeOrder(req, res, next) {
-  const { name, email, address, phone, orderList } = req.body;
+  const { name, email, address, phone, orderList, totalPrice } = req.body;
   try {
     console.log(req.body);
     await Order.create({
@@ -11,6 +11,7 @@ async function placeOrder(req, res, next) {
       address,
       phone,
       orderList,
+      totalPrice,
     });
     res.status(201).json({
       name,
@@ -18,6 +19,7 @@ async function placeOrder(req, res, next) {
       address,
       phone,
       orderList,
+      totalPrice,
     });
   } catch (err) {
     if (err.message.includes('E11000 duplicate key error')) {

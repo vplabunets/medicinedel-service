@@ -21,6 +21,9 @@ const OrderSchema = mongoose.Schema(
         quantity: Number,
       },
     ],
+    totalPrice: {
+      type: Number,
+    },
   },
   { versionKey: false, timestamps: true }
 );

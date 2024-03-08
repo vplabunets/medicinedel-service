@@ -67,9 +67,26 @@ async function updateOrder(req, res, next) {
   }
 }
 
+async function deleteOrder(req, res, next) {
+  const { _id } = req.params;
+
+  try {
+    const order = await Order.findById(_id);
+    if (!order) {
+      return res.status(400).json({ message: 'Order not found' });
+    }
+    await Order.findOneAndDelete({ _id });
+
+    return res.status(200).json(order);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 module.exports = {
   placeOrder,
   getOrders,
   getOrderById,
   updateOrder,
+  deleteOrder,
 };

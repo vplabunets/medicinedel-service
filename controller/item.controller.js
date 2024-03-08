@@ -64,10 +64,26 @@ async function updateItem(req, res, next) {
     console.error(err);
   }
 }
+async function deleteItem(req, res, next) {
+  const { _id } = req.params;
+
+  try {
+    const item = await Item.findById(_id);
+    if (!item) {
+      return res.status(400).json({ message: 'Item not found' });
+    }
+    await Item.findOneAndDelete({ _id });
+
+    return res.status(200).json(item);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 module.exports = {
   createItem,
   getItems,
   getItemById,
   updateItem,
+  deleteItem,
 };

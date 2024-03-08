@@ -1,7 +1,4 @@
-const createError = require("http-errors");
-// const jwt = require("jsonwebtoken");
-// const { JWT_SECRET } = process.env;
-// const { User } = require("../models/user");
+const createError = require('http-errors');
 
 function validateBody(schema) {
   return (req, res, next) => {
@@ -12,7 +9,5 @@ function validateBody(schema) {
     return next();
   };
 }
-
-
 
 module.exports = { validateBody };
